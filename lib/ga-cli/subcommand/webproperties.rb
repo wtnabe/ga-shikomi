@@ -22,12 +22,10 @@ module GACli
       #  "permissions": []
       # }
       #
-      # analytics.management.webproperties.get doesn't work !!!
-      #
       # [return] Array
       #
       def get
-        [list.detect {|item| item['id'] == options['property_id']}]
+        [api.execute(api.analytics.management.webproperties.get, :accountId => options['account_id'], :webPropertyId => options['property_id'])]
       end
     end
   end
