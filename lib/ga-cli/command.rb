@@ -25,6 +25,19 @@ module GACli
       Renderer.new(Subcommand::Accounts.new(api).list, options).render_accounts
     end
 
+    desc 'properties', 'display properties'
+    option :account_id, :type => :string, :required => true
+    def properties
+      Renderer.new(Subcommand::Webproperties.new(api, options).list, options).render_properties
+    end
+
+    desc 'property', 'display property'
+    option :account_id,  :type => :string, :required => true
+    option :property_id, :type => :string, :required => true
+    def property
+      Renderer.new(Subcommand::Webproperties.new(api, options).get, options).render_properties
+    end
+
     desc 'metrices', 'display metrics'
     option :verbose, :type => :boolean
     def metrics
