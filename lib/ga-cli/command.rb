@@ -8,7 +8,7 @@ module GACli
     class_option :duration
     class_option :config_file
     class_option :credential_store
-    class_option :format
+    class_option :format, :type => :string
 
     def initialize(*args)
       super
@@ -48,13 +48,11 @@ module GACli
     end
 
     desc 'metrices', 'display metrics'
-    option :verbose, :type => :boolean
     def metrics
       Renderer.new(Subcommand::Metadata.new(api).metrics, options).render_metadata
     end
 
     desc 'dimensions', 'display dimensions'
-    option :verbose, :type => :boolean
     def dimensions
       Renderer.new(Subcommand::Metadata.new(api).dimensions, options).render_metadata
     end

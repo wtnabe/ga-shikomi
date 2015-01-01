@@ -1,4 +1,5 @@
 require 'hirb'
+require 'pp'
 
 module GACli
   class Renderer
@@ -13,7 +14,7 @@ module GACli
     attr_reader :records, :options
 
     def raw
-      puts records
+      pp records
     end
 
     #
@@ -21,8 +22,8 @@ module GACli
     # [param] Proc preprocess
     #
     def render(fields, &preprocess)
-      if options[:verbose]
-        puts records
+      if options[:format] == 'original'
+        pp records
       else
         result = records.map {|e| preprocess.call(e)}
 
