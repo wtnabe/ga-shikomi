@@ -3,7 +3,7 @@ Dir.glob(File.dirname(__FILE__) + '/subcommand/*.rb').each {|f| require f}
 
 module GACli
   class Command < Thor
-    class_option :begin_date
+    class_option :start_date
     class_option :end_date
     class_option :duration
     class_option :config_file
@@ -19,6 +19,15 @@ module GACli
       end
     end
     attr_reader :api
+
+    desc 'ga', 'fetch and display ga data with profile'
+    option :profile_id, :type => :string, :required => true
+    option :start_date, :type => :string, :required => true
+    option :end_date,   :type => :string, :required => true
+    option :metrics,    :type => :string, :required => true
+    def ga
+      Renderer.new([Subcommand::Ga.new(api, options).get], options).render_ga
+    end
 
     desc 'accounts', 'display accounts'
     def accounts

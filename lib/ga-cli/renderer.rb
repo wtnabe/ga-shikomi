@@ -35,6 +35,10 @@ module GACli
       end
     end
 
+    def render_ga
+      render(records.first.keys) {|record| record}
+    end
+
     def render_accounts
       render(%w(id permissions)) {|record|
         {
