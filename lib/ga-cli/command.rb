@@ -69,5 +69,10 @@ module GACli
     def dimensions
       Renderer.new(Subcommand::Metadata.new(api).dimensions, options).render_metadata
     end
+
+    desc 'segments', 'display segments'
+    def segments
+      Renderer.new(Subcommand::Segments.new(api).list, options).render_segments
+    end
   end
 end

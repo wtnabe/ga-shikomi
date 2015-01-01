@@ -86,6 +86,14 @@ module GACli
       render(%w(id description)) {|record| pick_id_and_description(record)}
     end
 
+    def render_segments
+      fields = %w(id segmentId name type)
+
+      render(fields) {|record|
+        Hash[*fields.map {|f| [f, record[f]]}.flatten]
+      }
+    end
+
     #
     # [param]  Hash item
     # [return] Hash
