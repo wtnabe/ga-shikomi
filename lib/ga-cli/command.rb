@@ -20,6 +20,11 @@ module GACli
     end
     attr_reader :api
 
+    desc 'accounts', 'display accounts'
+    def accounts
+      Renderer.new(Subcommand::Accounts.new(api).list, options).render_accounts
+    end
+
     desc 'metrices', 'display metrics'
     option :verbose, :type => :boolean
     def metrics

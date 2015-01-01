@@ -12,20 +12,40 @@ module GACli
     end
     attr_reader :records, :options
 
-    def render_metadata
+    def raw
+      puts records
+    end
+
+    #
+    # [param] Array
+    # [param] Proc preprocess
+    #
+    def render(fields, &preprocess)
       if options[:verbose]
         puts records
       else
-        picked = records.map {|e| pick_id_and_description(e)}
-        opts   = {:fields => %w(id description)}
+        result = records.map {|e| preprocess.call(e)}
 
         case options[:format]
-        when 'csv'
-          csv(picked, opts)
+        when  'csv'
+          csv(result, :fields => fields)
         else
-          table(picked, opts)
+          table(result, :fields => fields)
         end
       end
+    end
+
+    def render_accounts
+      render(%w(id permissions)) {|record|
+        {
+          'id'          => record['id'],
+          'permissions' => record['permissions']['effective'].join(',')
+        }
+      }
+    end
+
+    def render_metadata
+      render(%w(id description)) {|record| pick_id_and_description(record)}
     end
 
     #

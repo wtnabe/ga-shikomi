@@ -1,11 +1,8 @@
+require_relative './base'
+
 module GACli
   module Subcommand
-    class Metadata
-      def initialize(api)
-        @api = api
-      end
-      attr_reader :api
-
+    class Metadata < Base
       #
       # [return] Hash
       #
