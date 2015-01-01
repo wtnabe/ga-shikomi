@@ -47,6 +47,19 @@ module GACli
       Renderer.new(Subcommand::Webproperties.new(api, options).get, options).render_properties
     end
 
+    desc 'profiles', 'display profiles (with property)'
+    option :account_id,  :type => :string, :required => true
+    option :property_id, :type => :string, :required => true
+    def profiles
+      Renderer.new(Subcommand::Profiles.new(api, options).list, options).render_profiles
+    end
+
+    desc 'filters', 'display filters (with profile)'
+    option :account_id, :type => :string, :required => true
+    def filters
+      Renderer.new(Subcommand::Filters.new(api, options).list, options).render_filters
+    end
+
     desc 'metrices', 'display metrics'
     def metrics
       Renderer.new(Subcommand::Metadata.new(api).metrics, options).render_metadata

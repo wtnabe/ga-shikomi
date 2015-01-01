@@ -60,6 +60,28 @@ module GACli
       }
     end
 
+    def render_profiles
+      render(%w(id name websiteUrl permissions)) {|record|
+        {
+          'id'          => record['id'],
+          'name'        => record['name'],
+          'websiteUrl'  => record['websiteUrl'],
+          'permissions' => record['permissions']['effective'].join(',')
+        }
+      }
+    end
+
+    def render_filters
+      render(%w(id name type details)) {|record|
+        {
+          'id'      => record['id'],
+          'name'    => record['name'],
+          'type'    => record['type'],
+          'details' => record["#{record['type'].downcase}Details"]
+        }
+      }
+    end
+
     def render_metadata
       render(%w(id description)) {|record| pick_id_and_description(record)}
     end
