@@ -93,6 +93,7 @@ module GACli
       fields = opts[:fields] || result.first.keys.sort
 
       puts CSV.generate {|csv|
+        csv << fields
         result.each {|r|
           csv << fields.map {|f| r[f]}
         }
