@@ -32,7 +32,9 @@ module GACli
         flow = ::Google::APIClient::InstalledAppFlow.new(
           :client_id     => secrets.client_id,
           :client_secret => secrets.client_secret,
-          :scope         => 'https://www.googleapis.com/auth/analytics')
+          :scope         => ['https://www.googleapis.com/auth/analytics',
+                             'https://www.googleapis.com/auth/analytics.edit'])
+
         client.authorization = flow.authorize
         credential.write_credentials(client.authorization)
       else
