@@ -6,6 +6,7 @@ module GACli
     class_option :config_file
     class_option :credential_store
     class_option :format, :type => :string
+    class_option :with_csv_header, :type => :boolean
 
     def initialize(*args)
       super

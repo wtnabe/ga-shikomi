@@ -146,7 +146,7 @@ module GACli
       fields = opts[:fields] || result.first.keys.sort
 
       puts CSV.generate {|csv|
-        csv << fields
+        csv << fields if options[:with_csv_header]
         result.each {|r|
           csv << fields.map {|f| r[f]}
         }
