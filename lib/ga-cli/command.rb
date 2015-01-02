@@ -3,9 +3,6 @@ Dir.glob(File.dirname(__FILE__) + '/subcommand/*.rb').each {|f| require f}
 
 module GACli
   class Command < Thor
-    class_option :start_date
-    class_option :end_date
-    class_option :duration
     class_option :config_file
     class_option :credential_store
     class_option :format, :type => :string
