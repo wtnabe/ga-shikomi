@@ -15,10 +15,11 @@ module GACli
 
       if args.last[:current_command] != 'help'
         store = (!options.nil? && options['credential-store']) || File.join(Dir.pwd, '.ga-cli-credential')
-        @api = Api.new(store)
+        @api    = Api.new(store)
+        @config = Config.new(options['config_file']).config if options['config_file']
       end
     end
-    attr_reader :api
+    attr_reader :api, :config
 
     desc 'ga', 'fetch and display ga data with profile'
     option :profile_id, :type => :string, :required => true
@@ -26,7 +27,7 @@ module GACli
     option :end_date,   :type => :string, :required => true
     option :metrics,    :type => :string, :required => true
     def ga
-      Renderer.new([Subcommand::Ga.new(api, options).get], options).render_ga
+      Renderer.new([Subcommand::Ga.new(api, options).get(config)], options).render_ga
     end
 
     desc 'accounts', 'display accounts'

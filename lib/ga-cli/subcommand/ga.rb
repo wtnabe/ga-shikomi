@@ -7,14 +7,16 @@ module GACli
       # --begin-date
       # --end-date
       # --metrics
-      def get
+      def get(config)
         opts = {
-          :ids         => options['profile_id'],
+          'ids'        => options['profile_id'],
           'start-date' => options['start_date'],
           'end-date'   => options['end_date'],
-          :metrics     => options['metrics']
+          'metrics'    => options['metrics']
         }
-        %w(dimensions
+        %w(ids
+           metrics
+           dimensions
            filters
            max-results
            output
@@ -23,7 +25,7 @@ module GACli
            sort
            start-index
            fields).each {|e|
-          opts[e] = options[e] if options[e]
+          opts[e] = config[e] if config[e]
         }
 
         api.execute(api.analytics.data.ga.get, opts)['totalsForAllResults']
