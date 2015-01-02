@@ -60,6 +60,14 @@ module GACli
       Renderer.new(Subcommand::Filters.new(api, options).list, options).render_filters
     end
 
+    desc 'goals', 'display goals (with profile)'
+    option :account_id,  :type => :string, :required => true
+    option :property_id, :type => :string, :required => true
+    option :profile_id,  :type => :string, :required => true
+    def goals
+      Renderer.new(Subcommand::Goals.new(api, options).list, options).render_goals
+    end
+
     desc 'metrices', 'display metrics'
     def metrics
       Renderer.new(Subcommand::Metadata.new(api).metrics, options).render_metadata

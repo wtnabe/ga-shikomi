@@ -73,12 +73,13 @@ module GACli
 
     def render_filters
       render(%w(id name type details)) {|record|
-        {
-          'id'      => record['id'],
-          'name'    => record['name'],
-          'type'    => record['type'],
-          'details' => record["#{record['type'].downcase}Details"]
-        }
+        pick_id_name_type_and_details(record)
+      }
+    end
+
+    def render_goals
+      render(%w(id name type details)) {|record|
+        pick_id_name_type_and_details(record)
       }
     end
 
@@ -103,6 +104,27 @@ module GACli
         'id'          => item['id'],
         'description' => item['attributes']['description']
       }
+    end
+
+    #
+    # [param]  Hash item
+    # [return] Hash
+    #
+    def pick_id_name_type_and_details(item)
+        {
+          'id'      => item['id'],
+          'name'    => item['name'],
+          'type'    => item['type'],
+          'details' => item["#{small_camelize(item['type'])}Details"]
+        }
+    end
+
+    #
+    # [param]  String str
+    # [return] String str
+    #
+    def small_camelize(str)
+      str.split('_').map {|e| e.capitalize}.tap {|a| a.first.downcase!}.join
     end
 
     #
