@@ -12,8 +12,8 @@ module GACli
     # [param] String store
     #
     def initialize(store)
-      @client    = nil
-      @analytics = nil
+      @client       = nil
+      @analytics    = nil
       @last_request = nil
 
       init_and_auth_analytics(store)
