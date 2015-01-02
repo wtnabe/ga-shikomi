@@ -6,16 +6,19 @@ require 'json'
 
 module GACli
   class Api
+    class InexpectantResponse < StandardError; end
+
     #
     # [param] String store
     #
     def initialize(store)
       @client    = nil
       @analytics = nil
+      @last_request = nil
 
       init_and_auth_analytics(store)
     end
-    attr_reader :client, :analytics
+    attr_reader :client, :analytics, :last_request
 
     #
     # [param] String store
@@ -49,9 +52,16 @@ module GACli
     # [return] Hash
     #
     def execute(method, params = {})
-      JSON.parse(client.execute(
+      @last_request = client.execute(
                         :api_method => method,
-                        :parameters => params).response.body)
+                        :parameters => params)
+
+      result = JSON.parse(last_request.response.body)
+      if result['error']
+        raise InexpectantResponse, result['error']
+      else
+        result
+      end
     end
   end
 end
