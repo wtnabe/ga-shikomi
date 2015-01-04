@@ -37,7 +37,18 @@ module GACli
     end
 
     def render_ga
-      render(records.first.keys) {|record| record}
+      case records.size
+      when 1
+        render(records.first.keys) {|record| record}
+      else
+        fields = [''] + records['totalsForAllResults'].keys
+
+        @records = records['rows'].map {|row|
+          Hash[*fields.zip(row).flatten]
+        } + [records['totalsForAllResults'].merge('' => 'totalsForAllResults')]
+
+        render(fields) {|record| record}
+      end
     end
 
     def render_accounts

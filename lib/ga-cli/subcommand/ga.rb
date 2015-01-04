@@ -28,7 +28,15 @@ module GACli
           opts[e] = config[e] if config[e]
         }
 
-        api.execute(api.analytics.data.ga.get, opts)['totalsForAllResults']
+        result = api.execute(api.analytics.data.ga.get, opts)
+
+        case result['rows'].size
+        when 1
+          [result['totalsForAllResults']]
+        else
+          fields = %w(columnHeaders totalsForAllResults rows)
+          fields.map {|e| {e => result[e]}}.reduce(:merge)
+        end
       end
     end
   end

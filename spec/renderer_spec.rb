@@ -23,5 +23,12 @@ module GACli
       }
     end
   end
+
+  describe '#render_ga' do
+    include GaDouble
+    it {
+      Renderer.new(multi_rows, {}).render_ga
+    }
+  end
 end
 

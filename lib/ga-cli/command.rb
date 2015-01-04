@@ -25,7 +25,7 @@ module GACli
     option :end_date,   :type => :string, :required => true
     option :metrics,    :type => :string, :required => true
     def ga
-      Renderer.new([Subcommand::Ga.new(api, options).get(config)], options).render_ga
+      Renderer.new(Subcommand::Ga.new(api, options).get(config), options).render_ga
     end
 
     desc 'accounts', 'display accounts'
