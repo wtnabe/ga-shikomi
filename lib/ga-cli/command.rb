@@ -68,13 +68,15 @@ module GACli
     end
 
     desc 'metrices', 'display metrics'
+    option :include_deprecated, :type => :boolean
     def metrics
-      Renderer.new(Subcommand::Metadata.new(api).metrics, options).render_metadata
+      Renderer.new(Subcommand::Metadata.new(api, options).metrics, options).render_metadata
     end
 
     desc 'dimensions', 'display dimensions'
+    option :include_deprecated, :type => :boolean
     def dimensions
-      Renderer.new(Subcommand::Metadata.new(api).dimensions, options).render_metadata
+      Renderer.new(Subcommand::Metadata.new(api, options).dimensions, options).render_metadata
     end
 
     desc 'segments', 'display segments'
