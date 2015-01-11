@@ -26,7 +26,7 @@ module GACli
            start-index
            fields).each {|e|
           opts[e] = config[e] if config[e]
-        }
+        } if config
 
         result = api.execute(api.analytics.data.ga.get, opts)
 

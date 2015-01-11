@@ -23,7 +23,7 @@ module GACli
     option :profile_id, :type => :string, :required => true
     option :start_date, :type => :string, :required => true
     option :end_date,   :type => :string, :required => true
-    option :metrics,    :type => :string, :required => true
+    option :metrics,    :type => :string, :default  => 'ga:pageviews,ga:users'
     def ga
       Renderer.new(Subcommand::Ga.new(api, options).get(config), options).render_ga
     end
