@@ -1,5 +1,5 @@
 # -*- mode: ruby -*-
-source "http://production.s3.rubygems.org"
+source "https://rubygems.org"
 
 gem "google-api-client"
 gem "thor"
