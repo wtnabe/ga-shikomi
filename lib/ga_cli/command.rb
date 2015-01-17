@@ -11,7 +11,7 @@ module GACli
     def initialize(*args)
       super
 
-      if args.last[:current_command] != 'help'
+      if args.last[:current_command].name != 'help'
         store = (!options.nil? && options['credential-store']) || File.join(Dir.pwd, '.ga-cli-credential')
         @api    = Api.new(store)
         @config = Config.new(options['config_file']).config if options['config_file']

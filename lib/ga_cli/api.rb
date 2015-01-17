@@ -26,7 +26,7 @@ module GACli
     def init_and_auth_analytics(store)
       @client = ::Google::APIClient.new(
                                     :application_name    => :gacli,
-                                    :application_version => Version)
+                                    :application_version => VERSION)
 
       credential = ::Google::APIClient::FileStorage.new(store)
       secrets    = ::Google::APIClient::ClientSecrets.load(File.dirname(store))

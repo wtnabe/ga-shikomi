@@ -1,5 +1,7 @@
+*~
 /.bundle
 /vendor
 .ga-cli-credential
 client_secrets.json
 Gemfile.lock
+/pkg/
