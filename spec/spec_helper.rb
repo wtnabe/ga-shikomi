@@ -1,4 +1,4 @@
-require_relative "../lib/ga_cli"
+require_relative "../lib/ga_shikomi"
 Dir.glob(File.dirname(__FILE__) + '/support/*.rb').each {|f| require f}
 
 require "minitest/spec"

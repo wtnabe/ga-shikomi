@@ -1,11 +1,11 @@
 # -*- mode: ruby; coding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ga_cli/version'
+require 'ga_shikomi/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ga-cli"
-  spec.version       = GACli::VERSION
+  spec.name          = "ga-shikomi"
+  spec.version       = GAShikomi::VERSION
   spec.authors       = ["wtnabe"]
   spec.email         = ["wtnabe@gmail.com"]
   spec.summary       = %q{Google Analytics API wrapper for CLI written in Ruby.}

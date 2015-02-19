@@ -1,7 +1,7 @@
 require 'thor'
 Dir.glob(File.dirname(__FILE__) + '/subcommand/*.rb').each {|f| require f}
 
-module GACli
+module GAShikomi
   class Command < Thor
     class_option :config_file
     class_option :credential_store

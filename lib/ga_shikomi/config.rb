@@ -1,4 +1,4 @@
-module GACli
+module GAShikomi
   class Config
     class FileNotFound < StandardError; end
 

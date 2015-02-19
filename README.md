@@ -1,4 +1,4 @@
-# Ga::Cli
+# GAShikomi
 
 Google Analytics API wrapper for CLI written in Ruby.
 
@@ -7,7 +7,7 @@ Google Analytics API wrapper for CLI written in Ruby.
 Now, You can fetch general ga data.
 
 ```ruby
-gem 'ga-cli'
+gem 'ga-shikomi'
 ```
 
 And then execute:
@@ -16,13 +16,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ga-cli
+    $ gem install ga-shikomi
 
 ## Usage
 
 type
 
-    ga-cli help
+    shikomi help
 
 ## Contributing
 

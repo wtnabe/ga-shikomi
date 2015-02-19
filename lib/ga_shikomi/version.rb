@@ -1,3 +1,3 @@
-module GACli
+module GAShikomi
   VERSION = '0.1.0'
 end

@@ -1,4 +1,4 @@
-module GACli
+module GAShikomi
   module MetadataDouble
     def metadata_double
       [

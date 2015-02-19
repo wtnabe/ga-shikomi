@@ -1,7 +1,7 @@
 require 'hirb'
 require 'pp'
 
-module GACli
+module GAShikomi
   class Renderer
     #
     # [param] Array records

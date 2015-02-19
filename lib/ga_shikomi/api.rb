@@ -4,7 +4,7 @@ require 'google/api_client/auth/installed_app'
 require 'google/api_client/auth/file_storage'
 require 'json'
 
-module GACli
+module GAShikomi
   class Api
     class InexpectantResponse < StandardError; end
 

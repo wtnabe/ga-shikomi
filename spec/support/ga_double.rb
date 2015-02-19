@@ -1,4 +1,4 @@
-module GACli
+module GAShikomi
   module GaDouble
     def multi_rows
       {

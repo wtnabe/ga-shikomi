@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-module GACli
+module GAShikomi
   describe Renderer do
     include MetadataDouble
 
