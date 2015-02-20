@@ -1,6 +1,6 @@
 require_relative './base'
 
-module GACli
+module GAShikomi
   module Subcommand
     class Metadata < Base
       #

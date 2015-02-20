@@ -1,4 +1,4 @@
-module GACli
+module GAShikomi
   module Subcommand
     class Filters < Base
       def list
