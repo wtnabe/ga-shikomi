@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "google-api-client", ">= 0.8.6", "< 0.9"
+  spec.add_runtime_dependency "google-api-client", "0.8.6"
   spec.add_runtime_dependency "thor"
   spec.add_runtime_dependency "hirb"
 
